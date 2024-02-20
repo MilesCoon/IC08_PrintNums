@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
+        int[] data = {1,2,6,4,3,2};
         Scanner s = new Scanner(System.in);
         int num = s.nextInt();
         System.out.println("PrintNums:");
@@ -9,7 +10,23 @@ public class Main {
         System.out.println("\nPrintNumsAscending");
         printNumsAscending(num);
         System.out.println("HarmonicSeries\n" + harmonicSeries(num));
+        System.out.println("countNumberOf(2, data) = " + countNumOf(2, data));
 
+    }
+
+    public static int countNumOf(int value, int[] array) {
+        return countNumOfRec(value, array, 0, 0);
+    }
+
+    private static int countNumOfRec(int value, int[] array, int count, int i) {
+        if (i >= array.length) {
+            return count;
+        } else {
+            if (array[i] == value) {
+                count++;
+            }
+            return countNumOfRec(value,array,count,i+1);
+        }
     }
 
     public static void printNums(int n) throws InterruptedException {
